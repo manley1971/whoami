@@ -10,22 +10,17 @@ var app = express();
 require('dotenv').load();
 require('./app/config/passport')(passport);
 
-mongoose.connect(process.env.MONGO_URI);
-
 app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/common', express.static(process.cwd() + '/app/common'));
 
-app.use(session({
-	secret: 'secretClementine',
-	resave: false,
-	saveUninitialized: true
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-routes(app, passport);
+app.get('/', function(req, res) {
+  let retval = {};
+  retval["ipaddress"]=req.headers["x-forwarded-for"];
+  retval["software"]=req.headers["user-agent"];
+  retval["language"]=req.headers["accept-language"].split(",")[0];
+  res.end(JSON.stringify(retval));
+});
 
 var port = process.env.PORT || 8080;
 app.listen(port,  function () {
