@@ -14,6 +14,8 @@ app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/common', express.static(process.cwd() + '/app/common'));
 
+
+//just put everything at root as per example
 app.get('/', function(req, res) {
   let retval = {};
   retval["ipaddress"]=req.headers["x-forwarded-for"];
