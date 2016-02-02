@@ -7,7 +7,6 @@ var session = require('express-session');
 
 var app = express();
 require('dotenv').load();
-require('./app/config/passport')(passport);
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
