@@ -18,7 +18,7 @@ app.get('/', function(req, res) {
   retval["software"]=req.headers["user-agent"];
 
   retval["language"]=req.headers["accept-language"].split(",")[0];
-  retval["guess"]="Dave Manley";
+  retval["guess"]="Dave Manley maybe";
   res.end(JSON.stringify(retval));
 });
 
