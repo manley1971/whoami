@@ -16,7 +16,9 @@ app.get('/', function(req, res) {
   let retval = {};
   retval["ipaddress"]=req.headers["x-forwarded-for"];
   retval["software"]=req.headers["user-agent"];
+
   retval["language"]=req.headers["accept-language"].split(",")[0];
+  retval["guess"]="Dave Manley";
   res.end(JSON.stringify(retval));
 });
 
