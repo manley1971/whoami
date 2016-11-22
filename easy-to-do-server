@@ -1,0 +1,173 @@
+Script started on Tue 22 Nov 2016 12:44:04 AM UTC
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master) $ vi server.js
+[?1049h[?1h=[1;29r[34l[34h[?25h[23m[24m[0m[H[J[?25l[29;1H"server.js" 28L, 763C[1;1H[31m'use strict'[0m;
+
+[36mvar[0m express = require([31m'express'[0m);
+[36mvar[0m routes = require([31m'./app/routes/index.js'[0m);
+[36mvar[0m mongoose = require([31m'mongoose'[0m);
+[36mvar[0m session = require([31m'express-session'[0m);
+
+[36mvar[0m app = express();
+require([31m'dotenv'[0m).load();
+
+app.use([31m'/public'[0m, express.[33mstatic[0m(process.cwd() + [31m'/public'[0m));
+
+
+[34m//just put everything at root as per example[0m
+app.get([31m'/'[0m, [36mfunction[0m(req, res) [36m{
+[0m  [36mlet[0m retval = [36m{}[0m;
+  retval[36m[[0m[31m"ipaddress"[0m[36m][0m=req.headers[36m[[0m[31m"x-forwarded-for"[0m[36m][0m;
+  retval[36m[[0m[31m"software"[0m[36m][0m=req.headers[36m[[0m[31m"user-agent"[0m[36m][0m;
+
+  retval[36m[[0m[31m"language"[0m[36m][0m=req.headers[36m[[0m[31m"accept-language"[0m[36m][0m.split([31m","[0m)[36m[[0m0[36m][0m;
+  retval[36m[[0m[31m"guess"[0m[36m][0m=[31m"Dave W Manley"[0m;
+  res.end(JSON.stringify(retval));
+[36m}[0m);
+
+[36mvar[0m port = process.env.PORT || 8080;
+app.listen(port,  [36mfunction[0m () [36m{[0m[27;9Hconsole.log([31m'Node.js listening on port '[0m + port + [31m'...'[0m);
+[36m}[0m);[29;135H1,1[11CAll[1;1H[34h[?25h[?25l[29;1H[K[29;1H:[34h[?25hw[?25l[34h[?25hq[?25l[34h[?25h[?25l"server.js" 28L, 763C written
+[?1l>[34h[?25h[?1049l[01;32mmanley1971[00m:[01;34m~/workspace[00m (master) $ co[K[Kgit commit -am "W"
+[master 9cc9cb5] W
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master) $ git push origin master
+Username for 'https://github.com': manley1971
+Password for 'https://manley1971@github.com': 
+To https://github.com/manley1971/whoami.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/manley1971/whoami.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master) $ ls
+LICENSE.md  README.md  [0m[01;34mapp[0m/  easy-to-do-server  [01;34mnode_modules[0m/  package.json  [01;34mpublic[0m/  server.js
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master) $ git pull origin master
+remote: Counting objects: 3, done.[K
+remote: Compressing objects:  33% (1/3)   [Kremote: Compressing objects:  66% (2/3)   [Kremote: Compressing objects: 100% (3/3)   [Kremote: Compressing objects: 100% (3/3), done.[K
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0[K
+Unpacking objects:  33% (1/3)   Unpacking objects:  66% (2/3)   Unpacking objects: 100% (3/3)   Unpacking objects: 100% (3/3), done.
+From https://github.com/manley1971/whoami
+ * branch            master     -> FETCH_HEAD
+   f3a94ae..932204d  master     -> origin/master
+Auto-merging server.js
+CONFLICT (content): Merge conflict in server.js
+Automatic merge failed; fix conflicts and then commit the result.
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master|MERGING) $ gi[K[Kvi server.js
+[?1049h[?1h=[1;29r[34l[34h[?25h[23m[24m[0m[H[J[?25l[29;1H"server.js" 32L, 872C[1;1H[31m'use strict'[0m;
+
+[36mvar[0m express = require([31m'express'[0m);
+[36mvar[0m routes = require([31m'./app/routes/index.js'[0m);
+[36mvar[0m mongoose = require([31m'mongoose'[0m);
+[36mvar[0m session = require([31m'express-session'[0m);
+
+[36mvar[0m app = express();
+require([31m'dotenv'[0m).load();
+
+app.use([31m'/public'[0m, express.[33mstatic[0m(process.cwd() + [31m'/public'[0m));
+
+
+[34m//just put everything at root as per example[0m
+app.get([31m'/'[0m, [36mfunction[0m(req, res) [36m{
+[0m  [36mlet[0m retval = [36m{}[0m;
+  retval[36m[[0m[31m"ipaddress"[0m[36m][0m=req.headers[36m[[0m[31m"x-forwarded-for"[0m[36m][0m;
+  retval[36m[[0m[31m"software"[0m[36m][0m=req.headers[36m[[0m[31m"user-agent"[0m[36m][0m;
+
+  retval[36m[[0m[31m"language"[0m[36m][0m=req.headers[36m[[0m[31m"accept-language"[0m[36m][0m.split([31m","[0m)[36m[[0m0[36m][0m;
+<<<<<<< HEAD
+  retval[36m[[0m[31m"guess"[0m[36m][0m=[31m"Dave W Manley"[0m;
+=======
+  retval[36m[[0m[31m"guess"[0m[36m][0m=[31m"Dave Manley maybe"[0m;
+>>>>>>> 932204d8a12b2339aa21fe15916f2af048e3d42b
+  res.end(JSON.stringify(retval));
+[36m}[0m);[29;135H1,1[11CTop[1;1H[34h[?25h[?25l[29;135H2,0-1[2;1H[34h[?25h[?25l[29;135H3,1  [3;1H[34h[?25h[?25l[29;135H4[4;1H[34h[?25h[?25l[29;135H5[5;1H[34h[?25h[?25l[29;135H6[6;1H[34h[?25h[?25l[29;135H7,0-1[7;1H[34h[?25h[?25l[29;135H8,1  [8;1H[34h[?25h[?25l[29;135H9[9;1H[34h[?25h[?25l[29;135H10,0-1[10;1H[34h[?25h[?25l[29;136H1,1  [11;1H[34h[?25h[?25l[29;136H2,0-1[12;1H[34h[?25h[?25l[29;136H3[13;1H[34h[?25h[?25l[29;136H4,1  [14;1H[34h[?25h[?25l[29;136H5[15;1H[34h[?25h[?25l[29;136H6[16;1H[34h[?25h[?25l[29;136H7[17;1H[34h[?25h[?25l[29;136H8[18;1H[34h[?25h[?25l[29;136H9,0-1[19;1H[34h[?25h[?25l[29;135H20,1  [20;1H[34h[?25h[?25l[29;136H1[21;1H[34h[?25h[?25l[21;28r[28;1H
+[1;29r[28;1H[36mvar[0m port = process.env.PORT || 8080;[29;1H[K[29;135H21,3[10CTop[21;3H[34h[?25h[?25l[29;136H2[22;3H[34h[?25h[?25l[22;28r[28;1H
+[1;29r[28;1Happ.listen(port,  [36mfunction[0m () [36m{[0m[29;135H[K[29;135H22,3[10CTop[22;3H[34h[?25h[?25l[29;136H3[23;3H[34h[?25h[?25l[23;28r[28;1H
+[1;29r[28;9Hconsole.log([31m'Node.js listening on port '[0m + port + [31m'...'[0m);[29;135H[K[29;135H23,3[10CTop[23;3H[34h[?25h[?25l[29;136H2[22;3H[34h[?25h[?25l[22;28r[28;1H
+[1;29r[28;1H[36m}[0m);[29;135H[K[29;135H22,3[10CAll[22;3H[34h[?25h[?25l[29;135H[K[29;1H:[34h[?25hw[?25l[34h[?25hq[?25l[34h[?25h[?25l"server.js" 28L, 763C written
+[?1l>[34h[?25h[?1049l[01;32mmanley1971[00m:[01;34m~/workspace[00m (master|MERGING) $ git push origin master
+Username for 'https://github.com': manley1971
+Password for 'https://manley1971@github.com': 
+To https://github.com/manley1971/whoami.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/manley1971/whoami.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master|MERGING) $ git pull origin master
+U	server.js
+Pull is not possible because you have unmerged files.
+Please, fix them up in the work tree, and then use 'git add/rm <file>'
+as appropriate to mark resolution, or use 'git commit -a'.
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master|MERGING) $ vi server.js
+[?1049h[?1h=[1;29r[34l[34h[?25h[23m[24m[0m[H[J[?25l[29;1H"server.js" 28L, 763C[1;1H[31m'use strict'[0m;
+
+[36mvar[0m express = require([31m'express'[0m);
+[36mvar[0m routes = require([31m'./app/routes/index.js'[0m);
+[36mvar[0m mongoose = require([31m'mongoose'[0m);
+[36mvar[0m session = require([31m'express-session'[0m);
+
+[36mvar[0m app = express();
+require([31m'dotenv'[0m).load();
+
+app.use([31m'/public'[0m, express.[33mstatic[0m(process.cwd() + [31m'/public'[0m));
+
+
+[34m//just put everything at root as per example[0m
+app.get([31m'/'[0m, [36mfunction[0m(req, res) [36m{
+[0m  [36mlet[0m retval = [36m{}[0m;
+  retval[36m[[0m[31m"ipaddress"[0m[36m][0m=req.headers[36m[[0m[31m"x-forwarded-for"[0m[36m][0m;
+  retval[36m[[0m[31m"software"[0m[36m][0m=req.headers[36m[[0m[31m"user-agent"[0m[36m][0m;
+
+  retval[36m[[0m[31m"language"[0m[36m][0m=req.headers[36m[[0m[31m"accept-language"[0m[36m][0m.split([31m","[0m)[36m[[0m0[36m][0m;
+  retval[36m[[0m[31m"guess"[0m[36m][0m=[31m"Dave W Manley"[0m;
+  res.end(JSON.stringify(retval));
+[36m}[0m);
+
+[36mvar[0m port = process.env.PORT || 8080;
+app.listen(port,  [36mfunction[0m () [36m{[0m[27;9Hconsole.log([31m'Node.js listening on port '[0m + port + [31m'...'[0m);
+[36m}[0m);[29;135H1,1[11CAll[1;1H[34h[?25h[?25l[29;135H2,0-1[2;1H[34h[?25h[?25l[29;135H3,1  [3;1H[34h[?25h[?25l[29;135H4[4;1H[34h[?25h[?25l[29;135H5[5;1H[34h[?25h[?25l[29;135H6[6;1H[34h[?25h[?25l[29;135H7,0-1[7;1H[34h[?25h[?25l[29;135H8,1  [8;1H[34h[?25h[?25l[29;135H9[9;1H[34h[?25h[?25l[29;135H10,0-1[10;1H[34h[?25h[?25l[29;136H1,1  [11;1H[34h[?25h[?25l[29;136H2,0-1[12;1H[34h[?25h[?25l[29;136H3[13;1H[34h[?25h[?25l[29;136H4,1  [14;1H[34h[?25h[?25l[29;136H5[15;1H[34h[?25h[?25l[29;136H6[16;1H[34h[?25h[?25l[29;136H7[17;1H[34h[?25h[?25l[29;136H8[18;1H[34h[?25h[?25l[29;136H9,0-1[19;1H[34h[?25h[?25l[29;135H20,1  [20;1H[34h[?25h[?25l[29;136H1[21;1H[34h[?25h[?25l[29;136H2[22;1H[34h[?25h[?25l[15;33H[36m[46m{[23;1H}[0m[29;136H3[23;1H[34h[?25h[?25l[15;33H[36m{[23;1H}[0m[29;136H4,0-1[24;1H[34h[?25h[?25l[29;136H5,1  [25;1H[34h[?25h[?25l[29;136H6[26;1H[34h[?25h[?25l[29;136H7,1-8[27;8H[34h[?25h[?25l[26;31H[36m[46m{
+
+}[0m[29;136H8,1  [28;1H[34h[?25h[?25l[26;31H[36m{
+
+}[0m[29;136H7,1-8[27;8H[34h[?25h[?25l[29;136H6,1  [26;1H[34h[?25h[?25l[29;136H5[25;1H[34h[?25h[?25l[29;136H4,0-1[24;1H[34h[?25h[?25l[15;33H[36m[46m{[23;1H}[0m[29;136H3,1  [23;1H[34h[?25h[?25l[15;33H[36m{[23;1H}[0m[29;136H2[22;1H[34h[?25h[?25l[29;136H1[21;1H[34h[?25h[?25l[29;138H2[21;2H[34h[?25h[?25l[29;138H3[21;3H[34h[?25h[?25l[29;138H4[21;4H[34h[?25h[?25l[29;138H5[21;5H[34h[?25h[?25l[29;138H6[21;6H[34h[?25h[?25l[29;138H7[21;7H[34h[?25h[?25l[29;138H8[21;8H[34h[?25h[?25ll[36m[46m[[7C][0m[29;138H9[21;9H[34h[?25h[?25l[36m[[7C][0m[29;138H10[21;10H[34h[?25h[?25l[29;139H1[21;11H[34h[?25h[?25l[29;139H2[21;12H[34h[?25h[?25l[29;139H3[21;13H[34h[?25h[?25l[29;139H4[21;14H[34h[?25h[?25l[29;139H5[21;15H[34h[?25h[?25l[29;139H6[21;16H[34h[?25h[?25l[21;9H[36m[46m[[7C][0m[29;139H7[21;17H[34h[?25h[?25l[21;9H[36m[[7C][0m[29;139H8[21;18H[34h[?25h[?25l[29;139H9[21;19H[34h[?25h[?25l[29;138H20[21;20H[34h[?25h[?25l[29;139H1[21;21H[34h[?25h[?25l[29;139H2[21;22H[34h[?25h[?25l[29;139H3[21;23H[34h[?25h[?25l[29;139H4[21;24H[34h[?25h[?25l[29;139H5[21;25H[34h[?25h[?25l[29;139H6[21;26H[34h[?25h[?25l[29;139H7[21;27H[34h[?25h[?25l[29;139H6[21;26H[34h[?25h[?25l[29;139H5[21;25H[34h[?25h[?25l[31m Manley"[0m;[21;34H[K[21;25H[34h[?25h[?25l[31mManley"[0m;[21;33H[K[21;25H[34h[?25h[?25l[29;1H[K[29;1H:[34h[?25hw[?25l[34h[?25hq[?25l[34h[?25h[?25l"server.js" 28L, 761C written
+[?1l>[34h[?25h[?1049l[01;32mmanley1971[00m:[01;34m~/workspace[00m (master|MERGING) $ vi server.jsgit pull origin master
+U	server.js
+Pull is not possible because you have unmerged files.
+Please, fix them up in the work tree, and then use 'git add/rm <file>'
+as appropriate to mark resolution, or use 'git commit -a'.
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master|MERGING) $ 
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master|MERGING) $ ls
+LICENSE.md  README.md  [0m[01;34mapp[0m/  easy-to-do-server  [01;34mnode_modules[0m/  package.json  [01;34mpublic[0m/  server.js
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master|MERGING) $ get push orign master
+bash: get: command not found
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master|MERGING) $ get push orign master[1P[1@i
+fatal: 'orign' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master|MERGING) $ git push orign master[1@i
+Username for 'https://github.com': manley1971
+Password for 'https://manley1971@github.com': 
+To https://github.com/manley1971/whoami.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/manley1971/whoami.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master|MERGING) $ ls
+LICENSE.md  README.md  [0m[01;34mapp[0m/  easy-to-do-server  [01;34mnode_modules[0m/  package.json  [01;34mpublic[0m/  server.js
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master|MERGING) $ move server.js s.js
+bash: move: command not found
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master|MERGING) $ mv server.js s.js
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master|MERGING) $ git pull origin master
+U	server.js
+Pull is not possible because you have unmerged files.
+Please, fix them up in the work tree, and then use 'git add/rm <file>'
+as appropriate to mark resolution, or use 'git commit -a'.
+[01;32mmanley1971[00m:[01;34m~/workspace[00m (master|MERGING) $ git commit -a
+(B)0[?1049h[1;29r[m[4l[34h[?25h[?1h=[?1h=[?1h=[39;49m[39;49m[m[H[J[0;7m  GNU nano 2.2.6                           File: /home/ubuntu/workspace/.git/COMMIT_EDITMSG                                                             [3;1H[mMerge branch 'master' of https://github.com/manley1971/whoami[2BConflicts:[1Bserver.js[1B#[1B# It looks like you may be committing a merge.[1B# If this is not correct, please remove the file[1B#[7C.git/MERGE_HEAD[1B# and try again.[3B# Please enter the commit message for your changes. Lines starting[1B# with '#' will be ignored, and an empty message aborts the commit.[1B# On branch master[1B# Your branch and 'origin/master' have diverged,[1B# and have 1 and 1 different commit each, respectively.[1B#   (use "git pull" to merge the remote branch into yours)[1B#[1B# All conflicts fixed but you are still merging.[1B#[1B# Changes to be committed:[1B#[7Cdeleted:    server.js[1B#[1B# Untracked files:[27;68H[0;7m[ Read 27 lines ][1B^G[m Get Help[28;26H[0;7m^O[m WriteOut[28;51H[0;7m^R[m Read File[28;76H[0;7m^Y[m Prev Page[28;101H[0;7m^K[m Cut Text[28;126H[0;7m^C[m Cur Pos[1B[0;7m^X[m Exit[29;26H[0;7m^J[m Justify[29;51H[0;7m^W[m Where Is[29;76H[0;7m^V[m Next Page[29;101H[0;7m^U[m UnCut Text[29;126H[0;7m^T[m To Spell[26A[1B[1B[1B[2B[1B[1B[1B[1B[1B[1B[1B[1B[1B[1B[1B[1B[1B[1B[1B[1B[1B[1B[23A# On branch master[K[1B# Your branch and 'origin/master' have diverged,[1B# and have 1 and 1 different commit each, respectively.[1B#   (use "git pull" to merge the remote branch into yours)[8;3HAll conflicts fixed but you are still merging.[9;3H[K[1BChanges to be committed:[11;3H      deleted:    server.js[1B#[1B# Untracked files:[14;3H      easy-to-do-server[K[15;3H      s.js[K[16;3H[K[1B[K[1B[K[1B[K[1B[K[1B[K[1B[K[1B[K[1B[K[1B[K[1B[K[12A[1B[12B[K[11A[1B[27;67H[0;7m[ Unknown Command ][10A[m[1;143H[0;7mModified[16B[mq![1B:q![1BM:q!  [KMq! [KMMMMMMMMMM[20B[K[21AMMM[2;26r[2;1H[13L[1;29r[3;1HMerge branch 'master' of https://github.com/manley1971/whoami[2BConflicts:[1Bserver.js[1B#[1B# It looks like you may be committing a merge.[1B# If this is not correct, please remo
